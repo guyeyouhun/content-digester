@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "content-digester"
+version = "0.1.0"
+description = "\u901a\u7528\u5185\u5bb9\u5206\u89e3\u5c42\u2014\u2014\u5c06\u7d20\u6750\u62c6\u89e3\u4e3a\u7ed3\u6784\u5316\u77e5\u8bc6\uff0c\u5199\u5165 auto-kb"
+requires-python = ">=3.10"
+dependencies = ["requests", "trafilatura", "youtube-transcript-api"]
+
+[project.scripts]
+content-digester = "content_digester.scripts.run:main"
+content-digester-mcp = "content_digester.scripts.mcp_server:main"
+
+[project.optional-dependencies]
+pdf = ["markitdown", "PyMuPDF"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["content_digester*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
